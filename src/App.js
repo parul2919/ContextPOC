@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import { ThemeProvider } from 'styled-components';
+import Header from './components/organism/header';
+import Footer from './components/organism/footer';
+import Main from './components/organism/main';
+import Theme from './common/css/theme';
+import ContextApi from './config/contextApi';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ContextApi>
+        <ThemeProvider theme={Theme}>
+          <Header />
+          <Main />
+          <Footer/>
+        </ThemeProvider>
+      </ContextApi>
     </div>
   );
 }
