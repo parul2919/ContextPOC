@@ -9,7 +9,10 @@ export const ContextApiConsumer = AppContext.Consumer;
 type State = {
   filterData: Array<any>,
   cardData: Array<any>,
-
+  sortType: String,
+  selectVal: String,
+  inputVal: String,
+  filtered: String,
 };
 
 type Props = {
@@ -19,6 +22,12 @@ class ContextApi extends React.Component<Props, State> {
   state = {
     filterData: [],
     cardData: [],
+    updateContextData: updatedState => this.updateContextData(updatedState),
+    sortType: "asc",
+    selectVal: "",
+    inputVal:'',
+    filtered:"",
+    checkedFilter:[],
   };
 
   updateContextData = (updatedState: Object) => {

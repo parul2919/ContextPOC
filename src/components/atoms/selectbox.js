@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { ContextApiConsumer } from './../../config/contextApi';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -14,41 +15,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NativeSelects() {
+const NativeSelects = props => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  });
+  const {label, options, id, onSelectChange} = props;
 
   const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
+    onSelectChange(event.target.value);
+    props.updateContextData({
+      selectVal: event.target.value,
+    })
   };
-
   return (
     <div>
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel htmlFor="outlined-age-native-simple">Age</InputLabel>
+        <InputLabel htmlFor="outlined-age-native-simple">{label}</InputLabel>
         <Select
           native
-          value={state.age}
+          value={props.selectVal}
           onChange={handleChange}
-          label="Age"
+          label={label}
           inputProps={{
-            name: 'age',
-            id: 'outlined-age-native-simple',
+            name: label,
+            id: id,
           }}
         >
           <option aria-label="None" value="" />
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
+          {
+            options  && options.map((item, index ) => (
+              <option value={item} key={index}> {item} </option>
+            ))
+          }
         </Select>
       </FormControl>
     </div>
   );
 }
+
+
+const ConnectedSelect = props => (
+  <ContextApiConsumer>
+    {({ updateContextData, selectVal}) => (
+      <NativeSelects
+        {...props}
+        updateContextData={updateContextData}
+        selectVal={selectVal}
+      />
+    )}
+  </ContextApiConsumer>
+);
+
+export default ConnectedSelect;
+export { NativeSelects };

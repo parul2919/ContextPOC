@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Container,Row, Col } from 'react-bootstrap';
 import { dataFetcher } from '../../common/js/dataFetcher';
 import styled from 'styled-components';
@@ -8,13 +8,12 @@ import { ContextApiConsumer } from '../../config/contextApi';
 
 const Main = props => {
     const Layout = styled.main`
-        margin:80px 0;
+        margin:80px;
     `;
-    const [data, setData] = useState({});
     useEffect(() => {
         onLoadApiCall();
     }, []);
-    const { updateContextData, cardData } = props;
+    const { updateContextData } = props;
     /**
    * On load call
    * @Method : calling 'https://rickandmortyapi.com/api/character/ '  api
@@ -27,10 +26,9 @@ const Main = props => {
       dataFetcher(`${URL}`).then(
         res => {
           if (res.status === 200) {
-            const response = res.data;
-            setData(response);
+            const response = res.data.results;
             updateContextData({
-                cardData: {name:'parul'},
+                cardData: response,
             });
           } else {
             console.log('failed');
@@ -40,14 +38,12 @@ const Main = props => {
         console.log('error', err);
     });
   });
-  console.log('Data',data);
-  console.log('cardData',cardData);
   return (
     <Layout >
-        <Container >
+        <Container fluid>
             <Row> 
-                <Col xs={4}><Filters/></Col>
-                <Col xs={8}><CardWrapper item={data.results}/></Col>
+                <Col xs={3}><Filters/></Col>
+                <Col xs={9}><CardWrapper/></Col>
             </Row>
         </Container>
     </Layout>

@@ -6,6 +6,7 @@ export default css`
     border-radius: 6px;
     background: black;
     padding: 10px;
+    margin-bottom:20px;
     .imageWrapper{
         position:relative;
         img{
