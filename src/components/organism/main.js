@@ -1,15 +1,11 @@
 import React, {useEffect} from 'react';
 import {Container,Row, Col } from 'react-bootstrap';
 import { dataFetcher } from '../../common/js/dataFetcher';
-import styled from 'styled-components';
 import Filters from '../molecule/filters/filters'
 import CardWrapper from '../molecule/cardWrapper/cardWrapper'
 import { ContextApiConsumer } from '../../config/contextApi';
 
 const Main = props => {
-    const Layout = styled.main`
-        margin:80px;
-    `;
     useEffect(() => {
         onLoadApiCall();
     }, []);
@@ -39,14 +35,14 @@ const Main = props => {
     });
   });
   return (
-    <Layout >
+    <div >
         <Container fluid>
             <Row> 
                 <Col xs={3}><Filters/></Col>
                 <Col xs={9}><CardWrapper/></Col>
             </Row>
         </Container>
-    </Layout>
+    </div>
   );
 };
 

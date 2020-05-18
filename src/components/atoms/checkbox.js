@@ -15,28 +15,9 @@ const useStyles = makeStyles({
 }); 
 const CheckboxLabels = props => {
   const classes = useStyles();
-  const {label, onCheckBoxChnage, checkedFilter} = props;
-  const [state, setState] = useState("");
-
-  //checkedFilter
-  
+  const {label, onCheckBoxChnage, type} = props;
   const handleChange = (evt) => {
     onCheckBoxChnage(evt.currentTarget);
-    let checkBoxObj = document.querySelectorAll('.checkbox-group');
-    checkBoxObj.forEach((element) => {
-      let checkboxInput = element.querySelectorAll("input[type = 'checkbox']")[0];
-      if (evt.currentTarget.name === checkboxInput.name &&  evt.currentTarget.checked !== true) {
-        checkboxInput.checked = true;
-        console.log('in if ');
-      }else if (evt.currentTarget.name === checkboxInput.name &&  evt.currentTarget.checked === true){
-        checkboxInput.checked = false;
-      }
-    });
-    if (evt.currentTarget.checked) {
-      setState(evt.currentTarget.name);
-      console.log('in else ');
-    }
-    
   }
   return (
     <div className="checkbox-group">
@@ -44,12 +25,11 @@ const CheckboxLabels = props => {
       <FormControlLabel
         control={
           <Checkbox
-            defaultChecked={props.widgetCount === 1}
-            checked = {false}
             onChange={handleChange}
             name={label}
             color="primary"
             id= {`checkbox-${label}`}
+            value={type}
           />
         }
         label={label}
