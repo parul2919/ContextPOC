@@ -38,8 +38,8 @@ const Main = props => {
     <div >
         <Container fluid>
             <Row> 
-                <Col xs={3}><Filters/></Col>
-                <Col xs={9}><CardWrapper/></Col>
+                <Col xs={12} lg={3}><Filters/></Col>
+                <Col xs={12} lg={9}><CardWrapper/></Col>
             </Row>
         </Container>
     </div>

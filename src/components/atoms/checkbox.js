@@ -11,6 +11,9 @@ const useStyles = makeStyles({
   },
   checkBlock: {
     margin: '0 8px  8px',
+  },
+  wrapper: {
+    margin:'0 !important',
   }
 }); 
 const CheckboxLabels = props => {
@@ -20,7 +23,7 @@ const CheckboxLabels = props => {
     onCheckBoxChnage(evt.currentTarget);
   }
   return (
-    <div className="checkbox-group">
+    <div className={`checkbox-group ${classes.wrapper}`}>
     <FormGroup className={classes.checkBlock}>
       <FormControlLabel
         control={

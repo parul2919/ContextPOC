@@ -10,6 +10,10 @@ const theme = {
   colorGrey: colors.GREY,
   colorBlack: colors.BLACK,
   colorMidnightBlack: colors.MIDNIGHT_BLACK,
+  colorRed:colors.ERROR_RED,
+  colorOpaque:colors.OPAQUE,
+  colorYellow:colors.YOLLOW,
+  colorOffwhite:colors.OFFWHITE,
   
   // app fonts
   fallbackFont: fonts.FALLBACK_FONT,
@@ -44,6 +48,10 @@ const theme = {
   desktopMediaQuery: dimension.mediaQuery.desktop,
   tabletMediaQuery: dimension.mediaQuery.tablet,
   smallMediaQuery: dimension.mediaQuery.small,
+
+  // theme border radius
+
+  borderRadius: '5px',
 };
 
 const themes = { dimension, ...theme };

@@ -7,8 +7,9 @@ import { ContextApiConsumer } from './../../config/contextApi';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
+    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    minWidth: '100%',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),

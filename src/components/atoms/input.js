@@ -6,44 +6,29 @@ import { ContextApiConsumer } from './../../config/contextApi';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
-      margin: '8px',
-      width: '350px',
+      width: '100%',
     },
   },
 }));
 
 const InputAtom = props => {
   const classes = useStyles();
-  const {label, variant, inputId} = props;
+  const {label, variant, inputId, updateSearch, buttonClickHandler} = props;
 
-  const [typeValue, setTypeValue] = useState("");
+  const [searchText, setSearchText] = useState("");
 
   const handleTyping = (e) => {
-      const txt = e.target.value;
-    setTypeValue(txt);
-    props.updateContextData({
-      inputVal: txt,
-    })
+    const search_text = e.target.value;
+    setSearchText(search_text);
+    updateSearch(search_text);
+    buttonClickHandler(e);
   }
   
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField label={label} variant={variant} id={inputId} value={props.inputVal} onChange={handleTyping}/>
+      <TextField label={label} variant={variant} id={inputId} onChange={handleTyping}/>
     </form>
   );
 };
 
-const ConnectedInputAtom = props => (
-    <ContextApiConsumer>
-      {({ updateContextData, inputVal}) => (
-        <InputAtom
-          {...props}
-          updateContextData={updateContextData}
-          inputVal={inputVal}
-        />
-      )}
-    </ContextApiConsumer>
-  );
-  
-  export default ConnectedInputAtom;
-  export { InputAtom };
+  export default InputAtom;

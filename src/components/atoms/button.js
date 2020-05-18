@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
-      margin: '8px 0 0 -10px',
+      margin: '0 0 0 10px',
       height:'55px'
     },
   },

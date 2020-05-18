@@ -7,12 +7,12 @@ export const ContextApiConsumer = AppContext.Consumer;
 // Create the provider using a traditional React.Component class
 
 type State = {
-  filterData: Array<any>,
   cardData: Array<any>,
   sortType: String,
   selectVal: String,
   inputVal: String,
-  filtered: String,
+  cardDisplayData: Array<any>,
+  filterSelectionObj: Array<any>,
 };
 
 type Props = {
@@ -20,14 +20,13 @@ type Props = {
 };
 class ContextApi extends React.Component<Props, State> {
   state = {
-    filterData: [],
     cardData: [],
     updateContextData: updatedState => this.updateContextData(updatedState),
     sortType: "asc",
     selectVal: "",
     inputVal:'',
-    filtered:"",
-    checkedFilter:[],
+    cardDisplayData: [],
+    filterSelectionObj:[],
   };
 
   updateContextData = (updatedState: Object) => {

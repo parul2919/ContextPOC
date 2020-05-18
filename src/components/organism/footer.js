@@ -30,9 +30,11 @@ export default function Footer() {
         showLabels
         className={classes.root}
         >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction label="Styled Css" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Context Api" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="React JS" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Material Ui" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="React Bootstrap" icon={<FavoriteIcon />} />
         </BottomNavigation>
     </footer>
   );
