@@ -35,47 +35,42 @@ const FilterCards = props => {
     const genderFilter = [...document.querySelectorAll('input[value="Gender"]:checked')];
     const originFilter = [...document.querySelectorAll('input[value="Origin"]:checked')];
 
+    var filter = { };
     let speciesFilterArray = [];
     speciesFilter.forEach((item) => {
-      speciesFilterArray.push(item.name);
+      filter = {
+        name: item.name,
+        category: item.value,
+      }
+      speciesFilterArray.push(filter);
       return  speciesFilterArray;
     });
 
     let genderFilterArray = [];
     genderFilter.forEach((item) => {
-      genderFilterArray.push(item.name);
+      filter = {
+        name: item.name,
+        category: item.value,
+      }
+      genderFilterArray.push(filter);
       return  genderFilterArray;
     });
 
     let originFilterArray = [];
     originFilter.forEach((item) => {
-      originFilterArray.push(item.name);
+      filter = {
+        name: item.name,
+        category: item.value,
+      }
+      originFilterArray.push(filter);
       return  originFilterArray;
     });
     
-    
-    let filteredCodes = getFilteredCodes(props.cardData, "species", speciesFilterArray);
-    console.log('hello',filteredCodes);
-    /*updateContextData({
-      cardData: props.cardData.filter(item => item.species == 'Human' && item.gender == "Female")
-    });*/
+    console.log(speciesFilterArray, genderFilterArray, originFilterArray);
+  
   };
 
-  const getFilteredCodes = (array, key, value) => {
-    return array.filter(function (o) {
-      let arr;
-      if (value.length){
-        value.forEach((item) => {
-          o = o[key] === item;
-        });
-      } else{
-        o = o[key] === value;
-      }
-      return o;
-    });
-  }
 
-  console.log(activeFilter);
   return (
     <div id="filterWrapper">
       <Card className={classes.root} variant="outlined">

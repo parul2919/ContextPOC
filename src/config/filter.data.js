@@ -3,7 +3,7 @@ export default {
     fields: [
         {
             label: 'Species',
-            categories: ["Human", "Mytholog", ]
+            categories: ["Human", "Mytholog", "Other Species..."]
         },
         {
             label: 'Gender',
@@ -11,7 +11,7 @@ export default {
         },
         {
             label: 'Origin',
-            categories: ["Post-Apocalyptic Earth", "Nuptia 4"]
+            categories: ["Unknown", "Post-Apocalyptic Earth", "Nuptia 4", "Other Origins..."]
         }
     ]
 };
