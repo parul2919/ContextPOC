@@ -69,8 +69,17 @@ const FilterCards = props => {
     console.log(speciesFilterArray, genderFilterArray, originFilterArray);
   
   };
-
-
+  const getFilteredCodes = (array, key, value) => {
+    return array.filter((e) => {
+      if (value.length){
+        value.forEach((item, index) => {
+          return e[key] == item;
+        })
+      }else{
+        return e[key] == value;
+      }
+    });
+  }
   return (
     <div id="filterWrapper">
       <Card className={classes.root} variant="outlined">
